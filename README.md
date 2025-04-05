@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+# Cochrane Library Frontend (React)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a React-based frontend application that displays a list of medical reviews, similar to the Cochrane Library. It supports filtering reviews by topic, shows auto-suggestions while typing, and uses infinite scroll to load results.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 How to Run the Project
 
-### `npm start`
+### 1. Clone the Repository
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+git clone https://github.com/emad-8869/cochrane-library-frontend.git
+cd cochrane-library-frontend
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 2. Install Dependencies
 
-### `npm test`
+Make sure you have **Node.js** installed (v16 or newer recommended), then run:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm install
+```
 
-### `npm run build`
+### 3. Start the Development Server
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This will start the app on `http://localhost:3000`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 📂 Project Structure
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+public/
+  └── cochrane_reviews.json        # Main data file
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+src/
+├── App.js                         # Main logic: filtering, infinite scroll
+├── App.css                        # Styling
+├── SearchBox.js                   # Search and suggestions
+├── ReviewCard.js                  # Displays one review
+├── api.js                         # Data loading, topic extraction
+├── dataLoader.js                  # Advanced data parser
+├── mock-data.js                   # Fallback data
+├── index.js                       # App entry point
+└── index.css                      # Global base styles
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## ✅ Features
 
-## Learn More
+- Loads review data from a JSON file
+- Search box with live topic suggestions
+- Filters reviews by selected topic
+- Infinite scroll with smooth loading
+- Clean UI with responsive design
+- Fallback mock data support for offline use
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🧪 Notes
 
-### Code Splitting
+- The app fetches `/cochrane_reviews.json` directly from the public directory.
+- All filtering and pagination are done in-memory.
+- Styled using CSS (no frameworks).
+- Built using functional components and React hooks.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 📩 Contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Once complete, email a ZIP file named:
 
-### Making a Progressive Web App
+**`cochrane_frontend_emad.zip`**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+to:  
+📧 **hr@vantage.com**
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Feel free to include any questions. We’ll then schedule time to review your code together.
