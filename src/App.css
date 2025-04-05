@@ -1,38 +1,291 @@
-.App {
-  text-align: center;
+/* App.css - Styles for Cochrane Reviews App */
+
+/* Container for search bar and suggestions */
+.search-container {
+  position: relative; /* Required for absolute positioning of dropdown */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Global reset to ensure consistency across browsers */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Base font and background for the app */
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f4f4f4;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Central layout wrapper */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header section */
+.header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.header h1 {
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+/* Responsive max width for search bar */
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Flex wrapper to align search and clear button */
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Main search input */
+.search-input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #962d91; /* Cochrane purple border */
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #7d2379; /* Slightly darker purple */
+  box-shadow: 0 0 8px rgba(150, 45, 145, 0.2);
+}
+
+/* Clear (×) button inside search bar */
+.clear-search {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #962d91;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.clear-search:hover {
+  background-color: rgba(150, 45, 145, 0.1);
+}
+
+/* Autocomplete dropdown */
+.suggestions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: white;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.suggestion-item {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background-color: #f2f2f2;
+}
+
+/* Used to highlight active filter topic */
+.current-filter strong {
+  color: #962d91;
+}
+
+/* Container for stacked list of reviews */
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Individual review card */
+.review-card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 0;
+  box-shadow: none;
+  border-radius: 0;
+  transition: none;
+  border-left: 4px solid #1e5eb5; /* Blue left border */
+  padding-left: 15px;
+}
+
+/* Disable hover effects for clean feel */
+.review-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Review title styling */
+.review-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.review-title a {
+  color: #0066cc;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.review-title a:hover {
+  color: #004499;
+  text-decoration: underline;
+}
+
+/* Author name under title */
+.review-author {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+/* Topic tag text */
+.review-topic {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  color: #666;
+}
+
+/* Review date in purple */
+.review-date {
+  color: #962d91;
+  font-weight: normal;
+}
+
+/* Infinite scroll loader message */
+.loading {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-style: italic;
+}
+
+/* Loader container during initial load */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  width: 100%;
+  color: #666;
+}
+
+/* Message if no search results */
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  color: #555;
+  font-size: 18px;
+}
+
+/* Footer at bottom of app */
+.footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+  text-align: center;
+  color: #777;
+  font-size: 14px;
+}
+
+/* Mobile view styles */
+@media (max-width: 768px) {
+  .header {
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+  }
+
+  .header h1 {
+    font-size: 24px;
+  }
+
+  .reviews-list {
+    gap: 20px;
+  }
+
+  .review-card {
+    padding-left: 10px;
+  }
+}
+
+/* 🔽 Topic Filter Tags & Count Summary Section 🔽 */
+.filter-summary {
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px 0;
+}
+
+.topic-tags {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.topic-tag {
+  display: inline-flex;
+  align-items: center;
+  background-color: #0d3c7c; /* Navy blue for filter tags */
   color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-left: 8px;
 }
 
-.App-link {
-  color: #61dafb;
+/* Remove topic (×) button */
+.remove-tag {
+  background: none;
+  border: none;
+  color: white;
+  margin-left: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Text below the filter showing how many matched */
+.results-count {
+  margin-top: 5px;
+  font-size: 16px;
 }
